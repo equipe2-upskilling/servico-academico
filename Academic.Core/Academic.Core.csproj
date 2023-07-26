@@ -51,6 +51,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TeacherDto.cs" />
     <Compile Include="TeacherRepository.cs" />
+    <Compile Include="TeacherService.cs" />
     <Compile Include="UserDto.cs" />
   </ItemGroup>
   <ItemGroup>

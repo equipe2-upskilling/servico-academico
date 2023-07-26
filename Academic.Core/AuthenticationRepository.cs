@@ -17,7 +17,7 @@ namespace Academic.Core
 
         public AuthenticationRepository()
         {
-            _apiUrl = "https://localhost:44379";
+            _apiUrl = "https://localhost:7194";
         }
         public async Task<bool> CreateLogin(User user)
         {

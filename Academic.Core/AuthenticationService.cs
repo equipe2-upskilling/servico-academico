@@ -5,14 +5,16 @@ namespace Academic.Core
 {
     public class AuthenticationService : IAuthenticationService
     {
-        private readonly IAuthenticationRepository _authenticationRepository;
+        private readonly IAuthenticationRepository _authenticationRepository = new AuthenticationRepository();
 
 
-        public AuthenticationService(IAuthenticationRepository authenticationRepository)
-        {
-            _authenticationRepository = authenticationRepository;
+        //public AuthenticationService(IAuthenticationRepository authenticationRepository)
+        //{
+        //    _authenticationRepository = authenticationRepository;
 
-        }
+        //}
+
+        public AuthenticationService( ) { }
 
         public async Task<bool> CreateLogin(UserDto userDto)
         {

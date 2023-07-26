@@ -13,8 +13,9 @@ namespace Academic.Web.Controllers
 
         public ActionResult Index()
         {
-            _repository.GetAll();
-            return View();
+            var teachers = _repository.GetAll();
+            return Json(teachers, JsonRequestBehavior.AllowGet);
+
         }
 
         public ActionResult About()

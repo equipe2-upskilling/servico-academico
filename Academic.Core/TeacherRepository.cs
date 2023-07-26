@@ -18,26 +18,11 @@ namespace Academic.Domain
         {
         }
 
-        public void CreateTableIfNotExists()
-        {
-            using (var connection = new NpgsqlConnection(context.ConnectionString()))
-            {
-                var sql = $"CREATE TABLE if not exists {TABLE_NAME}" +
-                     $"(" +
-                     $"id serial PRIMARY KEY, " +
-                     $"name VARCHAR (200) NOT NULL, " +
-                     $")";
-
-                connection.Execute(sql);
-            }
-        }
 
 
         public List<TeacherDto> GetAll()
         {
-            string commandText = $"SELECT * FROM {TABLE_NAME}";
-
-
+            string commandText = $"SELECT id, name, active FROM {TABLE_NAME}";
 
             using (var connection = new NpgsqlConnection(context.ConnectionString()))
             {
@@ -64,11 +49,11 @@ namespace Academic.Domain
 
         public void Add(TeacherDto dto)
         {
-            string commandText = $"INSERT INTO {TABLE_NAME} (id, name) VALUES (@id, @name)";
+            string commandText = $"INSERT INTO {TABLE_NAME} ( name) VALUES ( @name)";
 
             var queryArguments = new
             {
-                id = dto.Id,
+          
                 name = dto.Name,
 
             };
@@ -95,12 +80,14 @@ namespace Academic.Domain
         public void Update(TeacherDto dto, int id)
         {
             var commandText = $@"UPDATE {TABLE_NAME}
-                        SET Name = @name
+                        SET name = @name,
+                            active=@active
                         WHERE id = @id";
 
             var queryArgs = new
             {
                 id = dto.Id,
+                active=dto.Active,
                 name = dto.Name,
 
             };
