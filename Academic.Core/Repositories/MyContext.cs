@@ -2,7 +2,7 @@
 using System.Configuration;
 
 
-namespace Academic.Web.Models
+namespace Academic.Core.Repositories
 {
     public class MyContext
     {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Academic.Domain
+namespace Academic.Core.Repositories.In
 {
     public interface ITeacherRepository
     {

@@ -4,8 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Academic.Core
-{
+namespace Academic.Core.Services { 
     public class TeacherService
     {
     }

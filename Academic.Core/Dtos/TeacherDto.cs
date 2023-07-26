@@ -1,7 +1,6 @@
-﻿using Academic.Web.Models;
+﻿
 
-
-namespace Academic.Domain
+namespace Academic.Core.Dtos
 {
     public class TeacherDto : UserDto
     {

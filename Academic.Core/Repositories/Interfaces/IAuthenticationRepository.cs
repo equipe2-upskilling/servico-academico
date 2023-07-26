@@ -2,7 +2,7 @@
 using Academic.Domain;
 using System.Threading.Tasks;
 
-namespace Academic.Core
+namespace Academic.Core.Repositories.Interfaces
 {
     public interface IAuthenticationRepository
     {

@@ -1,18 +1,14 @@
-﻿using Academic.Domain;
-using Academic.Web.Models;
+﻿using Academic.Core.Dtos;
+using Academic.Core.Repositories;
+using Academic.Core.Repositories.Interfaces;
+using Academic.Core.Services.Interfaces;
+using Academic.Domain;
 using System.Threading.Tasks;
-namespace Academic.Core
+namespace Academic.Core.Services
 {
     public class AuthenticationService : IAuthenticationService
     {
         private readonly IAuthenticationRepository _authenticationRepository = new AuthenticationRepository();
-
-
-        //public AuthenticationService(IAuthenticationRepository authenticationRepository)
-        //{
-        //    _authenticationRepository = authenticationRepository;
-
-        //}
 
         public AuthenticationService( ) { }
 

@@ -42,17 +42,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AuthenticationRepository.cs" />
-    <Compile Include="AuthenticationService.cs" />
-    <Compile Include="IAuthenticationRepository.cs" />
-    <Compile Include="IAuthenticationService.cs" />
-    <Compile Include="ITeacherRepository.cs" />
-    <Compile Include="MyContext.cs" />
+    <Compile Include="Repositories\AuthenticationRepository.cs" />
+    <Compile Include="Services\AuthenticationService.cs" />
+    <Compile Include="Repositories\Interfaces\IAuthenticationRepository.cs" />
+    <Compile Include="Services\Interfaces\IAuthenticationService.cs" />
+    <Compile Include="Repositories\Interfaces\ITeacherRepository.cs" />
+    <Compile Include="Repositories\MyContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TeacherDto.cs" />
-    <Compile Include="TeacherRepository.cs" />
-    <Compile Include="TeacherService.cs" />
-    <Compile Include="UserDto.cs" />
+    <Compile Include="Dtos\TeacherDto.cs" />
+    <Compile Include="Repositories\TeacherRepository.cs" />
+    <Compile Include="Services\TeacherService.cs" />
+    <Compile Include="Dtos\UserDto.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

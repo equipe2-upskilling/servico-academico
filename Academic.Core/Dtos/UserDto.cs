@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace Academic.Domain
+﻿
+namespace Academic.Core.Dtos
 {
     public class UserDto
     {

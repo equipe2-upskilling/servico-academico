@@ -8,7 +8,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Academic.Core
+namespace Academic.Core.Repositories
 {
     public class AuthenticationRepository : IAuthenticationRepository
     {

@@ -1,4 +1,6 @@
-﻿using Academic.Web.Models;
+﻿using Academic.Core.Dtos;
+using Academic.Core.Repositories.Interfaces;
+
 using Dapper;
 using Npgsql;
 using System;
@@ -6,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Academic.Domain
+namespace Academic.Core.Repositories
 {
 
 
