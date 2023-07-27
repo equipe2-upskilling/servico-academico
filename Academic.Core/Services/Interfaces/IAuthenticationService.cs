@@ -11,5 +11,6 @@ namespace Academic.Core.Services.Interfaces
     public interface IAuthenticationService
     {
         Task<bool> CreateLogin(UserDto userDto);
+        Task<AccessToken> Login(UserDto userDto);
     }
 }

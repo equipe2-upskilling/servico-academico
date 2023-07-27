@@ -20,11 +20,15 @@ namespace Academic.Web
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new Bundle("~/bundles/bootstrap").Include(
+                      "~/Scripts/theme.js"));   
+            
+            bundles.Add(new Bundle("~/bundles/scripts").Include(
                       "~/Scripts/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/custom-bootstrap.css",
+                      "~/Content/site.css",
+                      "~/Content/theme.css"));
         }
     }
 }

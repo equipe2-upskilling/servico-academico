@@ -42,7 +42,7 @@ namespace Academic.Core.Repositories
                 return false;
             }
         }
-        public async Task<AccessToken> Login(User user)
+        public async Task<string> Login(User user)
         {
             var urlBase = _apiUrl + "/login";
             using (HttpClient client = new HttpClient())
@@ -53,17 +53,8 @@ namespace Academic.Core.Repositories
 
                     if (response.StatusCode == HttpStatusCode.OK)
                     {
-                        var result = response.Content.ReadAsStringAsync().Result;
-                        var accessToken = JsonConvert.DeserializeObject<AccessToken>(result);
-
-                        return new AccessToken
-                        {
-                            Authenticated = true,
-                            Expiration = accessToken.Expiration,
-                            Message = accessToken.Message,
-                            Token = accessToken.Token
-                        };
-
+                        return response.Content.ReadAsStringAsync().Result;
+                      
                     }
                 }
                 catch (Exception ex)
@@ -72,7 +63,7 @@ namespace Academic.Core.Repositories
                     throw new Exception($"Erro: {ex.Message}");
 
                 }
-                return new AccessToken();
+                return null;
 
             }
         }

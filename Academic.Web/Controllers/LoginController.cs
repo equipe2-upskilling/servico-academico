@@ -1,44 +1,51 @@
 ﻿using Academic.Core.Dtos;
 using Academic.Domain;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using System.Threading.Tasks;
-using Academic.Core.Repositories.Interfaces;
-using Academic.Core.Repositories;
+using Academic.Core.Services.Interfaces;
+using Academic.Core.Services;
+using Academic.Web.ModelView;
 using Newtonsoft.Json;
+using System.Web.Helpers;
+using Academic.Core;
 
 namespace Academic.Web.Controllers
 {
     public class LoginController : Controller
     {
-        IAuthenticationRepository _repository = new AuthenticationRepository();
+        IAuthenticationService _service = new AuthenticationService();
 
-        public ActionResult Index()
+        public ActionResult Index(bool invalid = false)
         {
-            return View();
+            return View(new { invalid = invalid });
         }
 
-       
-       // POST: Login/Create
+
+        // POST: Login/Create
         [HttpPost]
         public async Task<ActionResult> Logar(UserDto userDto)
         {
-           User user =  new User { Username= userDto.Username, Password=userDto.Password};
-          var response = await _repository.Login(user);
+            if (userDto == null || string.IsNullOrEmpty(userDto.Username) || string.IsNullOrEmpty(userDto.Password))
+                return View("Index", new ErrorModelView { Mensagem = "Login ou senha inválida" });
 
-            var cookie = new HttpCookie("usuario_logado");
+            var response = await _service.Login(userDto);
 
-            cookie.Value = response.Token;
-            cookie.Expires = DateTime.Now.AddDays(7);
-            cookie.HttpOnly = true;
-            Response.Cookies.Add(cookie);
+            if (response != null)
+            {
+                var cookie = new HttpCookie("usuario_logado");
+      
 
-            return Redirect("/");
+                cookie.Value = JsonConvert.SerializeObject(response.Token);
+                cookie.Expires = DateTime.Now.AddDays(7);
+                cookie.HttpOnly = true;
+                Response.Cookies.Add(cookie);
+                return RedirectToAction("Index", "TeacherCourse");
+            }
+            return RedirectToAction("Index", "TeacherCourse", new { isvalid = true});
 
         }
-    } }
+
+    }
+}
