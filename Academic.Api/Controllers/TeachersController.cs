@@ -1,14 +1,12 @@
-﻿using Academic.Core;
-using Academic.Domain;
-using Newtonsoft.Json.Linq;
+﻿using Academic.Core.Dtos;
+using Academic.Core.Repositories;
+using Academic.Core.Repositories.Interfaces;
+using Academic.Core.Services;
+using Academic.Core.Services.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
-using System.Web.Mvc;
 
 namespace Academic.Api.Controllers
 {

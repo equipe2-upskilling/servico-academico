@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using Academic.Core.Dtos;
+using System.Collections.Generic;
 
-namespace Academic.Core.Repositories.In
+namespace Academic.Core.Repositories.Interfaces
 {
     public interface ITeacherRepository
     {

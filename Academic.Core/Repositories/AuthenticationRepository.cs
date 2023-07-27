@@ -1,4 +1,6 @@
-﻿using Academic.Domain;
+﻿using Academic.Core.Dtos;
+using Academic.Core.Repositories.Interfaces;
+using Academic.Domain;
 using Newtonsoft.Json;
 using System;
 using System.Net;
@@ -38,6 +40,40 @@ namespace Academic.Core.Repositories
                     throw new Exception($"Erro: {ex.Message}");
                 }
                 return false;
+            }
+        }
+        public async Task<AccessToken> Login(User user)
+        {
+            var urlBase = _apiUrl + "/login";
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    var response = await client.PostAsJsonAsync(urlBase, user);
+
+                    if (response.StatusCode == HttpStatusCode.OK)
+                    {
+                        var result = response.Content.ReadAsStringAsync().Result;
+                        var accessToken = JsonConvert.DeserializeObject<AccessToken>(result);
+
+                        return new AccessToken
+                        {
+                            Authenticated = true,
+                            Expiration = accessToken.Expiration,
+                            Message = accessToken.Message,
+                            Token = accessToken.Token
+                        };
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                
+                    throw new Exception($"Erro: {ex.Message}");
+
+                }
+                return new AccessToken();
+
             }
         }
     }
